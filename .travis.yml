@@ -3,14 +3,19 @@ language: python
 python:
   - 2.7
 
+env:
+  - ANSIBLE_VERSION=2.4.2.0
+  - ANSIBLE_VERSION=2.4.1.0
+
 script:
-  - if [ -n "$TRAVIS_TAG" ]; then pex -o ansible.pex -v ansible==$TRAVIS_TAG; fi
+  - pex -o ansible-$ANSIBLE_VERSION.pex -v ansible==$ANSIBLE_VERSION
 
 deploy:
   provider: releases
   api_key:
     secure: LzA0jBVI3iyG8Y4kyq4ZYfBcQK4gEzoTIYxim8qQBvjDcPpMgFqs2h2+/DUkpKwJgqcm6u4TI2a040WtWzG7uO70A6rpwEhg6DLeDXURIc64P5krxuFO/TRCPsReWJF1/xZe73164ECuW57r8td1AWRK5X96B/18R3YyIEzqn60S7VLm+CfVXW3Xj+qS92Dtg9g1sMioASOTXUoo840lfi2UD7zbOTyg6hGvXZV2MXMSSeY2int/McrkMgmiCl/QwRcKVr+dQQL5vyHIZrSDDKUCtUeBB5BgVfa3Agpby0qrPweN5c05cRK+LMueam41JQ01llP7QgFqldHqPSOn/0yo3FX8Cjt3auoGaL10thAdhV6aG6QQnqZs6wk+5OfMP1dsKjEnmT/TGOO0qPWg2jVLWwDnwZCNR/SpcUiGm9+5oqbZxfZajZrHGDsUkclCk5kPP1TOMfIKdm+O/SDlZaYwfHZ0UVbVE5O+15mI2afG80qyphu/9xybbvsMnh71jedrKMcN/ccGHhtX/AmLNX7di2I2mYpTy0kZ2I4pQtyLzXRwStKXIu+und18mQBvd4ulcLBcVkd4m5ZBXDcKDdskypi70dAY5j9B6OsLmEsbOW7tXhXll3pzRWMNlEeSPlBxAcFtagEkR0OHGJnzztutI72c5EDmloKDloDSOJU=
-  file: ansible.pex
+  file: ansible-*.pex
+  file_glob: true
   on:
     repo: pdericson/ansible-pex
     tags: true
