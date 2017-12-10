@@ -33,6 +33,7 @@ env:
 
 script:
   - pex -o ansible-$ANSIBLE_VERSION.pex -v ansible==$ANSIBLE_VERSION
+  - PEX_SCRIPT=ansible-playbook ./ansible-$ANSIBLE_VERSION.pex --version
 
 deploy:
   provider: releases
