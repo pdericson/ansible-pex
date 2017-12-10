@@ -4,7 +4,7 @@ python:
   - 2.7
 
 script:
-  - if [ -n "$TRAVIS_TAG" ]; then pex ansible==$TRAVIS_TAG -o ansible.pex; fi
+  - if [ -n "$TRAVIS_TAG" ]; then pex -o ansible.pex -v ansible==$TRAVIS_TAG; fi
 
 deploy:
   provider: releases
