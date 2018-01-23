@@ -14,7 +14,7 @@ env:
   - ANSIBLE_VERSION=2.3.0.0
   - ANSIBLE_VERSION=2.2.3.0
   - ANSIBLE_VERSION=2.2.2.0
-  - ANSIBLE_VERSION=2.2.1.0
+  # - ANSIBLE_VERSION=2.2.1.0
   - ANSIBLE_VERSION=2.2.0.0
   # - ANSIBLE_VERSION=2.1.6.0
   # - ANSIBLE_VERSION=2.1.5.0
@@ -32,7 +32,7 @@ env:
   # - ANSIBLE_VERSION=1.9.4
 
 script:
-  - pex -o ansible-$ANSIBLE_VERSION.pex -v ansible==$ANSIBLE_VERSION ansible-lint pycodestyle yamllint netaddr ara
+  - pex -o ansible-$ANSIBLE_VERSION.pex -v ansible==$ANSIBLE_VERSION ansible-lint pycodestyle yamllint netaddr ara==0.14.5
   - PEX_SCRIPT=ansible-playbook ./ansible-$ANSIBLE_VERSION.pex --version
 
 deploy:
