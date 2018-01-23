@@ -32,7 +32,7 @@ env:
   - ANSIBLE_VERSION=1.9.4
 
 script:
-  - pex -o ansible-$ANSIBLE_VERSION.pex -v ansible==$ANSIBLE_VERSION ansible-lint pycodestyle yamllint netaddr
+  - pex -o ansible-$ANSIBLE_VERSION.pex -v ansible==$ANSIBLE_VERSION ansible-lint pycodestyle yamllint netaddr ara
   - PEX_SCRIPT=ansible-playbook ./ansible-$ANSIBLE_VERSION.pex --version
 
 deploy:
